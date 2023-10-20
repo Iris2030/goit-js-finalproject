@@ -51,9 +51,7 @@ function createLightbox(image) {
 
 function onPressEsc(event) {
 	
-	const lightbox = document.querySelector(".basicLightbox")
-
-	if(event.code === 'Escape' && lightbox){
+	if(event.code === 'Escape'){
 		instance.close()
 	}
 }
