@@ -27,32 +27,32 @@ gallery.addEventListener("click", onImgClick)
 
 function onImgClick(event) {
 
-	event.preventDefault()
+    event.preventDefault()
 	
-	createLightbox(event.target.dataset.source) 	
+    createLightbox(event.target.dataset.source) 	
 }
 
 let instance = null
 
 function createLightbox(image) {
-	instance = basicLightbox.create(`
-	<img src = "${image}" width="800" height="600">
-	`,{
-		onShow: () => {
-		  window.addEventListener('keydown', e => onPressEsc(e));
-		},
-		onClose: () => {
-		  window.removeEventListener('keydown', e => onPressEsc(e));
-		},
-	  })    
+    instance = basicLightbox.create(`
+    <img src = "${image}" width="800" height="600">
+    `,{
+	onShow: () => {
+	    window.addEventListener('keydown', e => onPressEsc(e));
+	},
+	onClose: () => {
+	    window.removeEventListener('keydown', e => onPressEsc(e));
+	},
+    })    
 
     instance.show()
 }
 
 function onPressEsc(event) {
 	
-	if(event.code === 'Escape'){
-		instance.close()
-	}
+    if(event.code === 'Escape'){
+	instance.close()
+    }
 }
 
