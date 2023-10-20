@@ -28,32 +28,35 @@ gallery.insertAdjacentHTML('afterbegin', galleryEl)
 gallery.addEventListener("click", onImgClick)
 
 function onImgClick(event) {
+
 	event.preventDefault()
 	
-	createLightbox(event.target.dataset.source)
-	
-	window.addEventListener("keydown", onPressEsc)    	
+	createLightbox(event.target.dataset.source) 	
 }
 
+let instance = null
+
 function createLightbox(image) {
-	const instance = basicLightbox.create(`
+	instance = basicLightbox.create(`
 	<img src = "${image}" width="800" height="600">
-	`,)    
+	`,{
+		onShow: () => {
+		  window.addEventListener('keydown', e => onPressEsc(e));
+		},
+		onClose: () => {
+		  window.removeEventListener('keydown', e => onPressEsc(e));
+		},
+	  })    
 
 	instance.show()
 }
 
 function onPressEsc(event) {
-	console.log(event);
 	
 	const lightbox = document.querySelector(".basicLightbox")
+
 	if(event.code === 'Escape' && lightbox){
-		lightbox.classList.remove("basicLightbox--visible")
-		onModalClosed()
-	}
-	
-	function onModalClosed() {
-		window.removeEventListener("keydown", onPressEsc)	
+		instance.close()
 	}
 }
 
