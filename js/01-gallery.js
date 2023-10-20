@@ -3,20 +3,18 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 function galleryMaker(items) {
-	return items.map(({ preview, original, description }) => {
-		return `<div class="gallery__item">
-		<a class="gallery__link" href="${original}">
-		<img
-			class="gallery__image"
-			src="${preview}"
-			data-source="${original}"
-			alt="${description}"
-		/>
-		</a>
-		</div>`
-		
-	}).join("") 
-	
+    return items.map(({ preview, original, description }) => {
+	return `<div class="gallery__item">
+	<a class="gallery__link" href="${original}">
+	    <img
+	    class="gallery__image"
+	    src="${preview}"
+	    data-source="${original}"
+	    alt="${description}"
+	/>
+	</a>
+	</div>`	
+    }).join("") 	
 }
 
 const galleryEl = galleryMaker(galleryItems)
@@ -48,7 +46,7 @@ function createLightbox(image) {
 		},
 	  })    
 
-	instance.show()
+    instance.show()
 }
 
 function onPressEsc(event) {
