@@ -27,9 +27,9 @@ gallery.addEventListener("click", onImgClick)
 
 function onImgClick(event) {
 
-	event.preventDefault()
+    event.preventDefault()
 	
-	createLightbox(event.target.dataset.source) 	
+    createLightbox(event.target.dataset.source) 	
 }
 
 let instance = null
