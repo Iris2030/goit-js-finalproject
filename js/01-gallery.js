@@ -39,10 +39,10 @@ function createLightbox(image) {
 	<img src = "${image}" width="800" height="600">
 	`,{
 		onShow: () => {
-		  window.addEventListener('keydown', e => onPressEsc(e));
+		  window.addEventListener('keydown', onPressEsc);
 		},
 		onClose: () => {
-		  window.removeEventListener('keydown', e => onPressEsc(e));
+		  window.removeEventListener('keydown',onPressEsc);
 		},
 	  })    
 
@@ -50,7 +50,7 @@ function createLightbox(image) {
 }
 
 function onPressEsc(event) {
-	
+
 	if(event.code === 'Escape'){
 		instance.close()
 	}
